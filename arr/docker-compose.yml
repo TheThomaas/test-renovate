@@ -1,0 +1,37 @@
+services:
+  radarr:
+    image: linuxserver/radarr:5.6.0
+    container_name: radarr
+    volumes:
+      # Config
+      - $APPDATA/radarr:/config
+      # Media
+      - $MEDIADIR/movies:/movies
+      - $MEDIADIR/animation:/animated
+      - $DOWNLOADS:/downloads
+      - $RECYCLEBIN:/recyclebin
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  sonarr:
+    image: linuxserver/sonarr:4.0.1
+    container_name: sonarr
+    volumes:
+      # Config
+      - $APPDATA/sonarr:/config
+      # Media
+      - $MEDIADIR/tv:/tv
+      - $DOWNLOADS:/downloads
+      - $RECYCLEBIN:/recyclebin
+    environment:
+      PUID: $PUID
+      PGID: $PGID
+      TZ: $TZ
+    ports:
+      - 8989:8989
+    restart: unless-stopped
