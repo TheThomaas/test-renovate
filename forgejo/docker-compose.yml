@@ -1,0 +1,23 @@
+networks:
+  forgejo:
+    external: false
+
+services:
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:7.0.1
+    container_name: forgejo
+    volumes:
+      # Config
+      - $APPDATA/forgejo:/data
+      # Other
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      USER_UID: $PUID
+      USER_GID: $PGID
+    ports:
+      - 8084:3000
+      - 2221:22
+    networks:
+      - forgejo
+    restart: unless-stopped
