@@ -1,6 +1,6 @@
 services:
   radarr:
-    image: linuxserver/radarr:5.14.0
+    image: linuxserver/radarr:5.18.4
     container_name: radarr
     volumes:
       # Config
