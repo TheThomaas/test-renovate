@@ -4,7 +4,7 @@ networks:
 
 services:
   forgejo:
-    image: codeberg.org/forgejo/forgejo:9.0.1
+    image: codeberg.org/forgejo/forgejo:9.0.3
     container_name: forgejo
     volumes:
       # Config
